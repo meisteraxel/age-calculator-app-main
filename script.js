@@ -79,14 +79,16 @@ function calculate() {
     ) {
       calcYears--;
       calcMonths = 12 - birthDate.getMonth() + currentDate.getMonth() - 1;
-      calcDays =
-        currentDate.getDate() +
-        (new Date(
+      calcDays = currentDate.getDate() - birthDate.getDate();
+      if (calcDays < 0) {
+        // Korrektur, wenn der Geburtstag bereits stattgefunden hat
+        const lastDayOfLastMonth = new Date(
           currentDate.getFullYear(),
           currentDate.getMonth(),
           0
-        ).getDate() -
-          birthDate.getDate());
+        ).getDate();
+        calcDays += lastDayOfLastMonth;
+      }
     }
 
     for (let i = 0; i < errorText.length; i++) {
