@@ -134,6 +134,11 @@ input::-webkit-inner-spin-button {
   font-size: 105px;
   font-family: "Poppins-ExtraBoldItalic", sans-serif;
   margin-top: 5px;
+  transition: transform 1s ease-in-out;
+}
+
+.animated {
+  transform: translateY(0);
 }
 
 #years,

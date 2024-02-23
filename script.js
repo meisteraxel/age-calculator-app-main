@@ -14,6 +14,31 @@ function validateDate(day, month, year) {
   return day <= lastDayOfMonth;
 }
 
+function animateNumber(element, finalValue) {
+  let startValue = 0;
+  const duration = 1000; // Dauer der Animation in Millisekunden
+  const interval = 10; // Intervall für jeden Schritt der Animation in Millisekunden
+
+  const stepValue = (finalValue - startValue) / (duration / interval);
+
+  function updateNumber(currentValue) {
+    element.innerText = Math.round(currentValue);
+  }
+
+  function animate(currentValue) {
+    updateNumber(currentValue);
+
+    if (currentValue < finalValue) {
+      requestAnimationFrame(() => animate(currentValue + stepValue));
+    } else {
+      updateNumber(finalValue);
+      element.classList.add("animated"); // Füge die Klasse für die Animation hinzu
+    }
+  }
+
+  animate(startValue);
+}
+
 function calculate() {
   const isValidDate = validateDate(day.value, month.value, year.value);
 
@@ -105,5 +130,8 @@ function calculate() {
     yearsText.innerHTML = calcYears;
     monthText.innerHTML = calcMonths;
     dayText.innerHTML = calcDays;
+    animateNumber(yearsText, calcYears);
+    animateNumber(monthText, calcMonths);
+    animateNumber(dayText, calcDays);
   }
 }
