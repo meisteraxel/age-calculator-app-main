@@ -57,6 +57,7 @@ body {
   border-radius: 20px;
   border-bottom-right-radius: 200px;
   padding: 50px 60px;
+  box-shadow: 0px 0px 40px 20px rgba(0,0,0,0.15);
 }
 
 .date-container {
@@ -78,6 +79,11 @@ body {
   font-family: "Poppins-bold", sans-serif;
   padding-left: 20px;
   cursor: pointer;
+  transition: background-color 200ms ease-in-out;
+}
+
+.date-container input:hover {
+  background-color: hsla(259, 100%, 65%, 0.4);
 }
 
 .date-container input:focus {
@@ -119,6 +125,10 @@ input::-webkit-inner-spin-button {
 
 #calculate-btn:hover {
   background-color: var(--off-black);
+}
+
+#calculate-btn:active {
+  transform: scale(.8);
 }
 
 .result-container {
